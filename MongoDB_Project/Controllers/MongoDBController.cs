@@ -166,6 +166,57 @@ namespace MongoDB_Project.Controllers
             return View(result);
         }
 
+        [HttpGet("3")]
+        public async Task<ActionResult> Query3()
+        {
+           
+            List<BsonDocument> result = new List<BsonDocument>();
+             var options = new AggregateOptions() {
+                AllowDiskUse = true
+            };
+             PipelineDefinition<BsonDocument, BsonDocument> pipeline = new BsonDocument[]
+            {
+                new BsonDocument("$project", new BsonDocument()
+                        .Add("_id", 0)
+                        .Add("DeviceOwnership_dim", "$$ROOT")), 
+                new BsonDocument("$lookup", new BsonDocument()
+                        .Add("localField", "DeviceOwnership_dim.non_existing_field")
+                        .Add("from", "radacct_dim")
+                        .Add("foreignField", "non_existing_field")
+                        .Add("as", "radacct_dim")), 
+                new BsonDocument("$unwind", new BsonDocument()
+                        .Add("path", "$radacct_dim")
+                        .Add("preserveNullAndEmptyArrays", new BsonBoolean(false))), 
+                new BsonDocument("$match", new BsonDocument()
+                        .Add("$expr", new BsonDocument()
+                                .Add("$eq", new BsonArray()
+                                        .Add("$DeviceOwnership_dim.MAC")
+                                        .Add("$radacct_dim.username")
+                                )
+                        )), 
+                new BsonDocument("$sort", new BsonDocument()
+                        .Add("radacct_dim.acctstarttime", 1)), 
+                new BsonDocument("$project", new BsonDocument()
+                        .Add("radacct_dim.acctstarttime", "$radacct_dim.acctstarttime")
+                        .Add("DeviceOwnership_dim.MAC", "$DeviceOwnership_dim.MAC")
+                        .Add("_id", 0)), 
+                new BsonDocument("$limit", 100)
+            };
+            
+            using (var cursor = await collection1.AggregateAsync(pipeline, options))
+            {
+                while (await cursor.MoveNextAsync())
+                {
+                    var batch = cursor.Current;
+                    foreach (BsonDocument document in batch)
+                    {
+                        result.Add(document);
+                    }
+                }
+            }
+            return View(result);
+        }
+
     }
 }
 
