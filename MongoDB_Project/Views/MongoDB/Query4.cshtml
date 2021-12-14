@@ -1,0 +1,20 @@
+@using MongoDB.Bson;
+@model IEnumerable<BsonDocument>
+
+
+<h2>All devices that have been authenticated more than half a year ago.</h2>
+<h4> &nbsp; &nbsp; &nbsp; Time &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; MAC </h4>
+@{
+    // Here the initialization happens outside of the loop
+    var i = 1;
+} 
+
+@foreach (var item in Model)
+{
+    <tr>
+    <td>
+        @i. &nbsp; &nbsp;  @item[1][1] &nbsp; &nbsp; @item[0][0] <br />
+    </td>
+    @{i++;}
+</tr>
+}

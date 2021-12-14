@@ -4,11 +4,17 @@
 
 <h2>Devices that are connected to VLAN 4 and no longer can be used</h2>
 <h4>Vlan &nbsp; &nbsp; &nbsp; &nbsp;  MAC &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;&nbsp; &nbsp;&nbsp; &nbsp; &nbsp;&nbsp; &nbsp;&nbsp; &nbsp; OwnerEmail</h4>
+@{
+    // Here the initialization happens outside of the loop
+    var i = 1;
+} 
+
 @foreach (var item in Model)
 {
     <tr>
     <td>
-        @item[2]  &nbsp; &nbsp; @item[1] &nbsp; &nbsp; @item[0]<br />
+        @i. &nbsp; &nbsp;  @item[2]  &nbsp; &nbsp; @item[1] &nbsp; &nbsp; @item[0]<br />
     </td>
+     @{i++;}
 </tr>
 }
