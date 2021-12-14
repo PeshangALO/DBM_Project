@@ -79,7 +79,7 @@ namespace MongoDB_Project.Controllers
                                 .Add("$sum", 1)
                         )),
                 new BsonDocument("$project", new BsonDocument()
-                        .Add("Number of non-active devices ", "$COUNT(radreply_dim\u1390username)")
+                        .Add("Total of ", "$COUNT(radreply_dim\u1390username)")
                         .Add("_id", 0))
                   };
 
