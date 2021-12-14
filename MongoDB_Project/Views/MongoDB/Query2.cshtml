@@ -1,0 +1,14 @@
+@using MongoDB.Bson;
+@model IEnumerable<BsonDocument>
+
+
+<h1>Devices that are connected to VLAN 4 and no longer can be used</h1>
+     
+@foreach (var item in Model) {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.Names)
+                @item<br/>
+            </td>
+        </tr>
+}
