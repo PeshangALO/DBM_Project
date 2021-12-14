@@ -1,0 +1,15 @@
+@using MongoDB.Bson;
+@model List<String>
+
+
+<h1>Give me a list of user emails to all devices that are connected to a VLAN that can no longer be used.</h1>
+<h4>Vlan  &nbsp;&nbsp; &nbsp;&nbsp; &nbsp;&nbsp;&nbsp; &nbsp;MAC&nbsp; &nbsp;&nbsp; &nbsp;&nbsp; &nbsp;&nbsp; &nbsp; &nbsp;&nbsp;Email</h4>
+
+
+@foreach (var item in Model) {
+        <tr>
+            <td>
+                @item<br/>
+            </td>
+        </tr>
+}

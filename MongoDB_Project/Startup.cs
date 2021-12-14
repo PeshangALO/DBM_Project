@@ -6,6 +6,7 @@ using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.HttpsPolicy;
 using Microsoft.Extensions.Configuration;
+using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using MongoDB.Driver;
@@ -30,6 +31,9 @@ namespace MongoDB_Project
                 return new MongoClient(uri);
             });
             services.AddControllersWithViews();
+
+            // services.AddDbContext<DatabaseContext_ADB1>(options =>
+                // options.UseMySql(Configuration.GetConnectionString("DefaultConnection_ADB1")));
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.

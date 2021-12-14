@@ -23,5 +23,5 @@ namespace MongoDB_Project
         public int acctInputOctets { get; set; }
         
     }
-   
+
 }

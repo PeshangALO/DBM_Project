@@ -7,14 +7,13 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Logging;
 using MongoDB.Bson;
 using MongoDB.Driver;
-
+using MySql.Data.MySqlClient;
 
 namespace MongoDB_Project.Controllers
 {
-    [ApiController]
-    [Route("[controller]")]
     public class ApplicationUser_dimController : Controller
     {
+        // private readonly DatabaseContext_ADB1 _context;
 
         private IMongoCollection<ApplicationUser_dim> _applicationUser_dim;
 
@@ -22,6 +21,7 @@ namespace MongoDB_Project.Controllers
         {
             var database = client.GetDatabase("IoT");
             _applicationUser_dim = database.GetCollection<ApplicationUser_dim>("A");
+            // _context = context;
         }
 
         [HttpGet]
@@ -68,5 +68,222 @@ namespace MongoDB_Project.Controllers
             return View();
            
         }
+
+        // [HttpGet("1")]
+        // public async Task<IActionResult> Juice1(){
+        //     using var connection = new MySqlConnection("Server=localhost;Database=ADB1;Uid=root;Password=juice");
+
+        //     await connection.OpenAsync();
+
+        //     var MAC = new List<String>();
+        //     var Datetime = new List<DateTime>();
+
+        //     using var command = new MySqlCommand("select R.acctstarttime, D.MAC from deviceownership_dim D, radacct_dim R where D.mac = R.username ORDER BY R.acctstarttime ASC LIMIT 100;", connection);
+        //     using var reader = await command.ExecuteReaderAsync();
+        //     while (await reader.ReadAsync())
+        //     {
+        //         MAC.Add("|  "+reader.GetDateTime(0).ToString()+"  |  "+reader.GetString(1));
+        //     }
+        //     return View(MAC);
+        // }
+
+        // [HttpGet("2")]
+        // public async Task<IActionResult> Juice2(){
+        //     using var connection = new MySqlConnection("Server=localhost;Database=ADB1;Uid=root;Password=juice");
+
+        //     await connection.OpenAsync();
+
+        //     var MAC = new List<String>();
+        //     var Datetime = new List<DateTime>();
+
+        //     using var command = new MySqlCommand("select R.acctstarttime, D.MAC from deviceownership_dim D, radacct_dim R where D.mac = R.username ORDER BY R.acctstarttime ASC LIMIT 100;", connection);
+        //     using var reader = await command.ExecuteReaderAsync();
+        //     while (await reader.ReadAsync())
+        //     {
+        //         MAC.Add("|  "+reader.GetDateTime(0).ToString()+"  |  "+reader.GetString(1));
+        //     }
+        //     return View(MAC);
+        // }
+
+        // [HttpGet("2")]
+        // public async Task<IActionResult> Juice3(){
+        //     using var connection = new MySqlConnection("Server=localhost;Database=ADB1;Uid=root;Password=juice");
+
+        //     await connection.OpenAsync();
+
+        //     var MAC = new List<String>();
+        //     var Datetime = new List<DateTime>();
+
+        //     using var command = new MySqlCommand("select R.acctstarttime, D.MAC from deviceownership_dim D, radacct_dim R where D.mac = R.username ORDER BY R.acctstarttime ASC LIMIT 100;", connection);
+        //     using var reader = await command.ExecuteReaderAsync();
+        //     while (await reader.ReadAsync())
+        //     {
+        //         MAC.Add("|  "+reader.GetDateTime(0).ToString()+"  |  "+reader.GetString(1));
+        //     }
+        //     return View(MAC);
+        // }
+
+        // [HttpGet("2")]
+        // public async Task<IActionResult> Juice4(){
+        //     using var connection = new MySqlConnection("Server=localhost;Database=ADB1;Uid=root;Password=juice");
+
+        //     await connection.OpenAsync();
+
+        //     var MAC = new List<String>();
+        //     var Datetime = new List<DateTime>();
+
+        //     using var command = new MySqlCommand("select R.acctstarttime, D.MAC from deviceownership_dim D, radacct_dim R where D.mac = R.username ORDER BY R.acctstarttime ASC LIMIT 100;", connection);
+        //     using var reader = await command.ExecuteReaderAsync();
+        //     while (await reader.ReadAsync())
+        //     {
+        //         MAC.Add("|  "+reader.GetDateTime(0).ToString()+"  |  "+reader.GetString(1));
+        //     }
+        //     return View(MAC);
+        // }
+
+        // [HttpGet("2")]
+        // public async Task<IActionResult> Juice5(){
+        //     using var connection = new MySqlConnection("Server=localhost;Database=ADB1;Uid=root;Password=juice");
+
+        //     await connection.OpenAsync();
+
+        //     var MAC = new List<String>();
+        //     var Datetime = new List<DateTime>();
+
+        //     using var command = new MySqlCommand("select R.acctstarttime, D.MAC from deviceownership_dim D, radacct_dim R where D.mac = R.username ORDER BY R.acctstarttime ASC LIMIT 100;", connection);
+        //     using var reader = await command.ExecuteReaderAsync();
+        //     while (await reader.ReadAsync())
+        //     {
+        //         MAC.Add("|  "+reader.GetDateTime(0).ToString()+"  |  "+reader.GetString(1));
+        //     }
+        //     return View(MAC);
+        // }
+
+        // [HttpGet("2")]
+        // public async Task<IActionResult> Juice6(){
+        //     using var connection = new MySqlConnection("Server=localhost;Database=ADB1;Uid=root;Password=juice");
+
+        //     await connection.OpenAsync();
+
+        //     var MAC = new List<String>();
+        //     var Datetime = new List<DateTime>();
+
+        //     using var command = new MySqlCommand("select R.acctstarttime, D.MAC from deviceownership_dim D, radacct_dim R where D.mac = R.username ORDER BY R.acctstarttime ASC LIMIT 100;", connection);
+        //     using var reader = await command.ExecuteReaderAsync();
+        //     while (await reader.ReadAsync())
+        //     {
+        //         MAC.Add("|  "+reader.GetDateTime(0).ToString()+"  |  "+reader.GetString(1));
+        //     }
+        //     return View(MAC);
+        // }
+
+        // [HttpGet("2")]
+        // public async Task<IActionResult> Juice7(){
+        //     using var connection = new MySqlConnection("Server=localhost;Database=ADB1;Uid=root;Password=juice");
+
+        //     await connection.OpenAsync();
+
+        //     var MAC = new List<String>();
+        //     var Datetime = new List<DateTime>();
+
+        //     using var command = new MySqlCommand("select R.acctstarttime, D.MAC from deviceownership_dim D, radacct_dim R where D.mac = R.username ORDER BY R.acctstarttime ASC LIMIT 100;", connection);
+        //     using var reader = await command.ExecuteReaderAsync();
+        //     while (await reader.ReadAsync())
+        //     {
+        //         MAC.Add("|  "+reader.GetDateTime(0).ToString()+"  |  "+reader.GetString(1));
+        //     }
+        //     return View(MAC);
+        // }
+
+        // [HttpGet("2")]
+        // public async Task<IActionResult> Juice8(){
+        //     using var connection = new MySqlConnection("Server=localhost;Database=ADB1;Uid=root;Password=juice");
+
+        //     await connection.OpenAsync();
+
+        //     var MAC = new List<String>();
+        //     var Datetime = new List<DateTime>();
+
+        //     using var command = new MySqlCommand("select R.acctstarttime, D.MAC from deviceownership_dim D, radacct_dim R where D.mac = R.username ORDER BY R.acctstarttime ASC LIMIT 100;", connection);
+        //     using var reader = await command.ExecuteReaderAsync();
+        //     while (await reader.ReadAsync())
+        //     {
+        //         MAC.Add("|  "+reader.GetDateTime(0).ToString()+"  |  "+reader.GetString(1));
+        //     }
+        //     return View(MAC);
+        // }
+
+        // [HttpGet("2")]
+        // public async Task<IActionResult> Juice9(){
+        //     using var connection = new MySqlConnection("Server=localhost;Database=ADB1;Uid=root;Password=juice");
+
+        //     await connection.OpenAsync();
+
+        //     var MAC = new List<String>();
+        //     var Datetime = new List<DateTime>();
+
+        //     using var command = new MySqlCommand("select R.acctstarttime, D.MAC from deviceownership_dim D, radacct_dim R where D.mac = R.username ORDER BY R.acctstarttime ASC LIMIT 100;", connection);
+        //     using var reader = await command.ExecuteReaderAsync();
+        //     while (await reader.ReadAsync())
+        //     {
+        //         MAC.Add("|  "+reader.GetDateTime(0).ToString()+"  |  "+reader.GetString(1));
+        //     }
+        //     return View(MAC);
+        // }
+
+        // [HttpGet("2")]
+        // public async Task<IActionResult> Juice10(){
+        //     using var connection = new MySqlConnection("Server=localhost;Database=ADB1;Uid=root;Password=juice");
+
+        //     await connection.OpenAsync();
+
+        //     var MAC = new List<String>();
+        //     var Datetime = new List<DateTime>();
+
+        //     using var command = new MySqlCommand("select R.acctstarttime, D.MAC from deviceownership_dim D, radacct_dim R where D.mac = R.username ORDER BY R.acctstarttime ASC LIMIT 100;", connection);
+        //     using var reader = await command.ExecuteReaderAsync();
+        //     while (await reader.ReadAsync())
+        //     {
+        //         MAC.Add("|  "+reader.GetDateTime(0).ToString()+"  |  "+reader.GetString(1));
+        //     }
+        //     return View(MAC);
+        // }
+
+        // [HttpGet("2")]
+        // public async Task<IActionResult> Juice11(){
+        //     using var connection = new MySqlConnection("Server=localhost;Database=ADB1;Uid=root;Password=juice");
+
+        //     await connection.OpenAsync();
+
+        //     var MAC = new List<String>();
+        //     var Datetime = new List<DateTime>();
+
+        //     using var command = new MySqlCommand("select R.acctstarttime, D.MAC from deviceownership_dim D, radacct_dim R where D.mac = R.username ORDER BY R.acctstarttime ASC LIMIT 100;", connection);
+        //     using var reader = await command.ExecuteReaderAsync();
+        //     while (await reader.ReadAsync())
+        //     {
+        //         MAC.Add("|  "+reader.GetDateTime(0).ToString()+"  |  "+reader.GetString(1));
+        //     }
+        //     return View(MAC);
+        // }
+
+        // [HttpGet("2")]
+        // public async Task<IActionResult> Juice12(){
+        //     using var connection = new MySqlConnection("Server=localhost;Database=ADB1;Uid=root;Password=juice");
+
+        //     await connection.OpenAsync();
+
+        //     var MAC = new List<String>();
+        //     var Datetime = new List<DateTime>();
+
+        //     using var command = new MySqlCommand("select R.acctstarttime, D.MAC from deviceownership_dim D, radacct_dim R where D.mac = R.username ORDER BY R.acctstarttime ASC LIMIT 100;", connection);
+        //     using var reader = await command.ExecuteReaderAsync();
+        //     while (await reader.ReadAsync())
+        //     {
+        //         MAC.Add("|  "+reader.GetDateTime(0).ToString()+"  |  "+reader.GetString(1));
+        //     }
+        //     return View(MAC);
+        // }
+
     }
 }

@@ -1,0 +1,15 @@
+@using MongoDB.Bson;
+@model List<String>
+
+
+<h1>Give me a list of all user emails and their total number of devices.</h1>
+<h4>Number of Devices&nbsp; &nbsp;&nbsp; &nbsp;&nbsp; &nbsp;&nbsp; Email</h4>
+
+
+@foreach (var item in Model) {
+        <tr>
+            <td>
+                @item<br/>
+            </td>
+        </tr>
+}
