@@ -10,6 +10,7 @@ using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using MongoDB.Driver;
+using Neo4j.Driver;
 
 namespace MongoDB_Project
 {
@@ -25,15 +26,17 @@ namespace MongoDB_Project
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
-              services.AddSingleton<IMongoClient, IMongoClient>(s =>
+            services.AddSingleton<IMongoClient, IMongoClient>(s =>
             {
                 var uri = s.GetRequiredService<IConfiguration>()["MongoUri"];
                 return new MongoClient(uri);
             });
             services.AddControllersWithViews();
+            services.AddSingleton(GraphDatabase.Driver("bolt://localhost:7687", AuthTokens.Basic("neo4j", "juice")));
+
 
             // services.AddDbContext<DatabaseContext_ADB1>(options =>
-                // options.UseMySql(Configuration.GetConnectionString("DefaultConnection_ADB1")));
+            // options.UseMySql(Configuration.GetConnectionString("DefaultConnection_ADB1")));
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
