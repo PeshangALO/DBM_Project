@@ -1,0 +1,20 @@
+@using MongoDB.Bson;
+@model IEnumerable<BsonDocument>
+
+
+<h2>All VLANs → how many active devices are on each VLAN</h2>
+<h4> &nbsp; &nbsp; &nbsp; Vlan &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; Number of active devices </h4>
+@{
+    // Here the initialization happens outside of the loop
+    var i = 1;
+} 
+
+@foreach (var item in Model)
+{
+    <tr>
+    <td>
+        @i. &nbsp; &nbsp;  @item[1][0]&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;  &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;  @item[0] <br />
+    </td>
+    @{i++;}
+</tr>
+}
