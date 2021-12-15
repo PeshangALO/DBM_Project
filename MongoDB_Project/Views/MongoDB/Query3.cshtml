@@ -2,19 +2,9 @@
 @model IEnumerable<BsonDocument>
 
 
-<h2>100 devices that have been online for the longest time</h2>
-<h4> &nbsp; &nbsp; &nbsp; Time &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; MAC </h4>
-@{
-    // Here the initialization happens outside of the loop
-    var i = 1;
-} 
+<h2>Number of non-active devices on VLAN 3</h2>
 
-@foreach (var item in Model)
-{
-    <tr>
-    <td>
-        @i. &nbsp; &nbsp;  @item[1][0] &nbsp; &nbsp; @item[0][0] <br />
-    </td>
-    @{i++;}
-</tr>
-}
+ <h3>
+                 @Html.DisplayFor(modelItem => Model)
+ </h3>
+         

@@ -26,7 +26,7 @@ namespace MongoDB_Project.Controllers
         }
 
         [HttpGet]
-        public async Task<ActionResult> IndexAsync()
+        public async Task<ActionResult> Query3()
         {
            
             List<BsonDocument> result = new List<BsonDocument>();
@@ -167,7 +167,7 @@ namespace MongoDB_Project.Controllers
         }
 
         [HttpGet("3")]
-        public async Task<ActionResult> Query3()
+        public async Task<ActionResult> IndexAsync()
         {
            
             List<BsonDocument> result = new List<BsonDocument>();
