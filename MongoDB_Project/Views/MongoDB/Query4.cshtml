@@ -1,8 +1,8 @@
-     @using MongoDB.Bson;
+@using MongoDB.Bson;
 @model IEnumerable<BsonDocument>
 
 
-<h2>100 devices that have been online for the longest time</h2>
+<h2>All devices that have been authenticated more than half a year ago.</h2>
 <h4> &nbsp; &nbsp; &nbsp; Time &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; MAC </h4>
 @{
     // Here the initialization happens outside of the loop
@@ -13,7 +13,7 @@
 {
     <tr>
     <td>
-        @i. &nbsp; &nbsp;  @item[1][0] &nbsp; &nbsp; @item[0][0] <br />
+        @i. &nbsp; &nbsp;  @item[1][1] &nbsp; &nbsp; @item[0][0] <br />
     </td>
     @{i++;}
 </tr>
