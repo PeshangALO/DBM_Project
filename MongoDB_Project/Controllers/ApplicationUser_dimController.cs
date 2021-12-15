@@ -7,14 +7,13 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Logging;
 using MongoDB.Bson;
 using MongoDB.Driver;
+using MySql.Data.MySqlClient;
+
 
 namespace MongoDB_Project.Controllers
 {
-    [ApiController]
-    [Route("[controller]")]
     public class ApplicationUser_dimController : Controller
     {
-
         private IMongoCollection<ApplicationUser_dim> _applicationUser_dim;
 
         public ApplicationUser_dimController(IMongoClient client)

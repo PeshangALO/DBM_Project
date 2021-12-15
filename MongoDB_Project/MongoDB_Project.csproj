@@ -6,6 +6,11 @@
 
   <ItemGroup>
     <PackageReference Include="MongoDB.Driver" Version="2.14.1" />
+    <PackageReference Include="Microsoft.EntityFrameworkCore" Version="3.1.2" />
+    <PackageReference Include="Neo4j.Driver" Version="4.3.2" />
+    <PackageReference Include="Neo4jClient" Version="3.2.0.1" />
+    <PackageReference Include="Pomelo.EntityFrameworkCore.MySql" Version="3.1.1" />
+
   </ItemGroup>
 
 </Project>

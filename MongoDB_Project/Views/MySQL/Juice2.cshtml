@@ -1,0 +1,15 @@
+@using MongoDB.Bson;
+@model List<String>
+
+
+<h1>Give me the previous query, but only student devices.</h1>
+<h4>Date&nbsp; &nbsp;&nbsp; &nbsp;&nbsp; &nbsp;&nbsp; &nbsp; &nbsp;&nbsp;  &nbsp;&nbsp; &nbsp;&nbsp; &nbsp;&nbsp;&nbsp; &nbsp;MAC</h4>
+
+
+@foreach (var item in Model) {
+        <tr>
+            <td>
+                @item<br/>
+            </td>
+        </tr>
+}

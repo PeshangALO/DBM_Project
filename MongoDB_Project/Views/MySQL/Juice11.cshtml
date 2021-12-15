@@ -1,0 +1,15 @@
+@using MongoDB.Bson;
+@model List<String>
+
+
+<h1>Give me the average of how many days a device lay dormant in the system before it becomes inactive.</h1>
+<h4>Average days in system until deleted</h4>
+
+
+@foreach (var item in Model) {
+        <tr>
+            <td>
+                @item<br/>
+            </td>
+        </tr>
+}

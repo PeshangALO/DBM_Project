@@ -1,0 +1,15 @@
+@using MongoDB.Bson;
+@model List<String>
+
+
+<h1>Give me the total number of non-active devices for the given VLAN.</h1>
+<h4>Number of non active devices</h4>
+
+
+@foreach (var item in Model) {
+        <tr>
+            <td>
+                @item<br/>
+            </td>
+        </tr>
+}

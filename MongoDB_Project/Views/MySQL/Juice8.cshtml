@@ -1,0 +1,15 @@
+@using MongoDB.Bson;
+@model List<String>
+
+
+<h1>Give me all devices connected/active the whole time between the dates "01.01.2021" to "01.02.2021".</h1>
+<h4>MAC&nbsp; &nbsp;&nbsp; &nbsp;&nbsp; &nbsp;&nbsp; &nbsp; &nbsp;&nbsp;  &nbsp;&nbsp; &nbsp;&nbsp; &nbsp;&nbsp;&nbsp; &nbsp;Email</h4>
+
+
+@foreach (var item in Model) {
+        <tr>
+            <td>
+                @item<br/>
+            </td>
+        </tr>
+}
