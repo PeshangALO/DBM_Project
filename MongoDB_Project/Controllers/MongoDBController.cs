@@ -278,6 +278,74 @@ namespace MongoDB_Project.Controllers
             return View(result);
         }
 
+        [HttpGet("5")]
+        public async Task<ActionResult> Query5()
+        {
+           
+            List<BsonDocument> result = new List<BsonDocument>();
+             var options = new AggregateOptions() {
+                AllowDiskUse = true
+            };
+              PipelineDefinition<BsonDocument, BsonDocument> pipeline = new BsonDocument[]
+            {
+                new BsonDocument("$project", new BsonDocument()
+                        .Add("_id", 0)
+                        .Add("radreply_dim", "$$ROOT")), 
+                new BsonDocument("$lookup", new BsonDocument()
+                        .Add("localField", "radreply_dim.non_existing_field")
+                        .Add("from", "DeviceOwnership_dim")
+                        .Add("foreignField", "non_existing_field")
+                        .Add("as", "DeviceOwnership_dim")), 
+                new BsonDocument("$unwind", new BsonDocument()
+                        .Add("path", "$DeviceOwnership_dim")
+                        .Add("preserveNullAndEmptyArrays", new BsonBoolean(false))), 
+                new BsonDocument("$match", new BsonDocument()
+                        .Add("$and", new BsonArray()
+                                .Add(new BsonDocument()
+                                        .Add("$expr", new BsonDocument()
+                                                .Add("$eq", new BsonArray()
+                                                        .Add("$DeviceOwnership_dim.MAC")
+                                                        .Add("$radreply_dim.username")
+                                                )
+                                        )
+                                )
+                                .Add(new BsonDocument()
+                                        .Add("$expr", new BsonDocument()
+                                                .Add("$eq", new BsonArray()
+                                                        .Add("$DeviceOwnership_dim.State")
+                                                        .Add(new BsonInt64(1L))
+                                                )
+                                        )
+                                )
+                        )), 
+                new BsonDocument("$group", new BsonDocument()
+                        .Add("_id", new BsonDocument()
+                                .Add("radreply_dim\u1390value", "$radreply_dim.value")
+                        )
+                        .Add("COUNT(radreply_dim\u1390username)", new BsonDocument()
+                                .Add("$sum", 1)
+                        )), 
+                new BsonDocument("$project", new BsonDocument()
+                        .Add("COUNT(radreply_dim\u1390username)", "$COUNT(radreply_dim\u1390username)")
+                        .Add("radreply_dim.value", "$_id.radreply_dim\u1390value")
+                        .Add("_id", 0))
+            };
+            
+            using (var cursor = await collection2.AggregateAsync(pipeline, options))
+            {
+                while (await cursor.MoveNextAsync())
+                {
+                    var batch = cursor.Current;
+                    foreach (BsonDocument document in batch)
+                    {
+                        result.Add(document);
+                    }
+                }
+            }
+            return View(result);
+        }
+
+
 
     }
 }
