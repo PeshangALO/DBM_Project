@@ -21,7 +21,7 @@ CREATE TABLE IF NOT EXISTS `ADB1`.`Fact_table` (
   `radreply_dim` INT UNSIGNED NOT NULL,
   `radaact_dim` BIGINT(255) NOT NULL,
   `ApplicationUser_dim` VARCHAR(253) CHARACTER SET 'utf8mb4' COLLATE 'utf8mb4_0900_ai_ci' NOT NULL,
-  `DeviceOwnership_dim` INT UNSIGNED NOT NULL,
+  `DeviceOwnership_dim` INT NOT NULL,
   `Vlan_dim` VARCHAR(64) CHARACTER SET 'utf8mb4' NOT NULL,
   -- `Time_dim` VARCHAR(45) NOT NULL,
   PRIMARY KEY (`id`),
